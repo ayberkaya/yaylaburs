@@ -458,6 +458,13 @@
     const closeBtn = document.getElementById('modal-close');
     const submitBtn = form.querySelector('.cta');
     const endpoint = 'https://script.google.com/macros/s/AKfycbxOATBZ6PIbUb_zhS3rS4daycotPT1UflkcVoxxeYMqedi-sqiw6PeamH5hY78fpTRO/exec';
+    const student = document.getElementById('student-name');
+    const school = document.getElementById('school');
+    const grade = document.getElementById('grade');
+    const parent = document.getElementById('parent-name');
+    const phone = document.getElementById('phone');
+    const email = document.getElementById('email');
+    const sessions = Array.from(document.querySelectorAll('input[name="session"]'));
 
     const openModal = () => {
       overlay.classList.add('show');
@@ -465,8 +472,42 @@
     };
     const closeModal = () => overlay.classList.remove('show');
 
+    const setRequiredMessage = (el, message) => {
+      el.addEventListener('invalid', () => el.setCustomValidity(message));
+      el.addEventListener('input', () => el.setCustomValidity(''));
+    };
+
+    setRequiredMessage(student, 'Lütfen öğrenci adını girin.');
+    setRequiredMessage(school, 'Lütfen okul adını girin.');
+    setRequiredMessage(grade, 'Lütfen sınıfınızı seçin.');
+    setRequiredMessage(parent, 'Lütfen veli adını girin.');
+
+    phone.addEventListener('invalid', () => {
+      if (!phone.value) phone.setCustomValidity('Lütfen telefon numarası girin.');
+      else phone.setCustomValidity('Lütfen 11 haneli sadece rakam girin.');
+    });
+    phone.addEventListener('input', () => phone.setCustomValidity(''));
+
+    email.addEventListener('invalid', () => {
+      if (email.value) email.setCustomValidity('Lütfen geçerli bir e-posta girin.');
+    });
+    email.addEventListener('input', () => email.setCustomValidity(''));
+
+    if (sessions.length) {
+      const firstSession = sessions[0];
+      firstSession.addEventListener('invalid', () => {
+        firstSession.setCustomValidity('Lütfen bir seans seçin.');
+      });
+      sessions.forEach((radio) => {
+        radio.addEventListener('change', () => {
+          sessions.forEach((r) => r.setCustomValidity(''));
+        });
+      });
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!form.reportValidity()) return;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Gönderiliyor...';
       const formData = new FormData(form);
