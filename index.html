@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yayla Eğitim Kurumları | 2026 Bursluluk Sınavı Başvurusu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2d4b92;
+      --bg: #ffffff;
+      --text: #1f2a3d;
+      --muted: #5c6b83;
+      --card: #f5f7fb;
+      --border: #e3e8f2;
+      --radius: 12px;
+      --shadow: 0 12px 30px rgba(45, 75, 146, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      width: min(1080px, 100%);
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .logo {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      background: #f9fbff;
+      overflow: hidden;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 4vw, 32px);
+      color: var(--primary);
+    }
+    .hero p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .mini-copy {
+      margin: 14px 0 18px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .badges {
+      display: flex;
+      gap: 10px;
+      margin: 6px 0 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .badge {
+      background: #eef2fb;
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .advantages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 6px 0 14px;
+    }
+    .adv {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .adv-title {
+      margin: 0;
+      font-weight: 600;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .form-card {
+      background: #f9fbff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    form {
+      display: grid;
+      gap: 12px;
+    }
+    label {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 13px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      background: #fff;
+      color: #000;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45, 75, 146, 0.16);
+    }
+    .cta {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.12s ease;
+      box-shadow: 0 10px 24px rgba(45, 75, 146, 0.18);
+    }
+    .sessions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .session-day {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fff;
+    }
+    .session-day h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--primary);
+      letter-spacing: 0.1px;
+    }
+    .radio {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #f9fbff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+    .radio:hover {
+      border-color: rgba(45, 75, 146, 0.5);
+      box-shadow: 0 2px 8px rgba(45, 75, 146, 0.08);
+    }
+    .radio input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      appearance: none;
+      border: 2px solid #000;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .radio input[type="radio"]:checked {
+      border-color: #000;
+      box-shadow: inset 0 0 0 5px var(--primary);
+    }
+    .radio span {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .cta:hover { transform: translateY(-1px); }
+    .cta:active { transform: translateY(0); box-shadow: 0 6px 16px rgba(45, 75, 146, 0.18); }
+    .footer-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    .address-note {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .phone-note {
+      margin-top: 6px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    @media (max-width: 960px) {
+      .card { grid-template-columns: 1fr; padding: 22px; }
+      header { justify-content: center; }
+      .hero, .mini-copy, .advantages { text-align: center; }
+      .adv { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="card">
+      <section>
+        <header>
+          <div class="logo">
+            <img src="./logo.png" alt="Yayla Eğitim Kurumları Logosu" loading="lazy">
+          </div>
+          <div class="brand">Yayla Eğitim Kurumları</div>
+        </header>
+        <div class="hero">
+          <h1>2026 Bursluluk Sınavı Başvuruları Açıldı</h1>
+          <p>5, 6, 7, 9, 10, 11. sınıflar | Ücretsiz başvuru | Sınırlı kontenjan</p>
+        </div>
+        <p class="mini-copy">
+          Çocuğunuzun akademik yolculuğunu deneyimli öğretmenler, modern sınıflar ve güvenli kampüsümüzde destekliyoruz. Başvurunuz bize ulaşır ulaşmaz, danışmanlarımız sizi arayarak süreci şeffafça anlatır.
+        </p>
+        <div class="advantages">
+          <div class="adv">
+            <p class="adv-title">%100’e varan burs imkânı</p>
+          </div>
+          <div class="adv">
+            <p class="adv-title">Deneyimli öğretmen kadrosu</p>
+          </div>
+          <div class="adv">
+            <p class="adv-title">Modern ve güvenli kampüs</p>
+          </div>
+        </div>
+        <div class="badges">
+          <span class="badge">Ücretsiz Başvuru</span>
+          <span class="badge">Hızlı Geri Dönüş</span>
+          <span class="badge">Sınırlı Kontenjan</span>
+        </div>
+        <div class="footer-note">Yayla Eğitim Kurumu 2009 yılından beri interaktif eğitim vermektedir.</div>
+      </section>
+
+      <section class="form-card" aria-label="Başvuru Formu">
+        <form>
+          <div>
+            <label for="student-name">Öğrenci adı soyadı</label>
+            <input id="student-name" name="student-name" type="text" placeholder="Örn: Elif Yılmaz" required>
+          </div>
+          <div>
+            <label for="school">Okul</label>
+            <input id="school" name="school" type="text" placeholder="Okul adı" required>
+          </div>
+          <div>
+            <label for="grade">Sınıf</label>
+            <select id="grade" name="grade" required>
+              <option value="" disabled selected>Sınıfınızı Seçiniz</option>
+              <option>5. sınıf</option>
+              <option>6. sınıf</option>
+              <option>7. sınıf</option>
+              <option>9. sınıf</option>
+              <option>10. sınıf</option>
+              <option>11. sınıf</option>
+            </select>
+          </div>
+          <div>
+            <label for="session-1">Katılmak istediğiniz seans</label>
+            <div class="sessions">
+              <div class="session-day">
+                <h4>10 Ocak Cumartesi</h4>
+                <label class="radio">
+                  <input type="radio" name="session" id="session-1" value="10 Ocak Cumartesi - 10:00" required>
+                  <span>Saat 10:00</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="session" value="10 Ocak Cumartesi - 13:00">
+                  <span>Saat 13:00</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="session" value="10 Ocak Cumartesi - 16:00">
+                  <span>Saat 16:00</span>
+                </label>
+              </div>
+              <div class="session-day">
+                <h4>11 Ocak Pazar</h4>
+                <label class="radio">
+                  <input type="radio" name="session" value="11 Ocak Pazar - 10:00">
+                  <span>Saat 10:00</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="session" value="11 Ocak Pazar - 13:00">
+                  <span>Saat 13:00</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="session" value="11 Ocak Pazar - 16:00">
+                  <span>Saat 16:00</span>
+                </label>
+              </div>
+              <div class="session-day">
+                <h4>12 Ocak Pazartesi</h4>
+                <label class="radio">
+                  <input type="radio" name="session" value="12 Ocak Pazartesi - 17:00">
+                  <span>Saat 17:00</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="parent-name">Veli adı soyadı</label>
+            <input id="parent-name" name="parent-name" type="text" placeholder="Örn: Ayşe Yılmaz" required>
+          </div>
+          <div>
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" minlength="11" maxlength="11" placeholder="05xx xxx xx xx" required>
+          </div>
+          <div>
+            <label for="email">E-posta (opsiyonel)</label>
+            <input id="email" name="email" type="email" placeholder="E-posta adresi">
+          </div>
+          <button class="cta" type="submit">BAŞVURUYU GÖNDER</button>
+          <div class="address-note">
+            <strong>Sınavın Yapılacağı Kurumun Adresi:</strong><br>
+            Yalı, Mithatpaşa Cd. No:497, 35310 Güzelbahçe/İzmir
+            <div class="phone-note">Bize +90 (530) 970 06 55 numaralı telefondan ulaşabilirsiniz</div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+
