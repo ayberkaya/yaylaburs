@@ -292,6 +292,22 @@
       color: var(--text);
       font-weight: 600;
     }
+    .phone-group {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+    .phone-prefix {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #eef2fb;
+      color: var(--primary);
+      font-weight: 700;
+      min-width: 64px;
+      text-align: center;
+    }
     .cta:hover { transform: translateY(-1px); }
     .cta:active { transform: translateY(0); box-shadow: 0 6px 16px rgba(45, 75, 146, 0.18); }
     .footer-note {
@@ -429,7 +445,10 @@
           </div>
           <div>
             <label for="phone">Telefon</label>
-            <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" minlength="11" maxlength="11" placeholder="05xx xxx xx xx" required>
+            <div class="phone-group">
+              <span class="phone-prefix">+90</span>
+              <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" placeholder="5xx xxx xx xx" required>
+            </div>
           </div>
           <div>
             <label for="email">E-posta (opsiyonel)</label>
@@ -484,7 +503,7 @@
 
     phone.addEventListener('invalid', () => {
       if (!phone.value) phone.setCustomValidity('Lütfen telefon numarası girin.');
-      else phone.setCustomValidity('Lütfen 11 haneli sadece rakam girin.');
+      else phone.setCustomValidity('Lütfen +90 sonrası 10 haneli sadece rakam girin.');
     });
     phone.addEventListener('input', () => phone.setCustomValidity(''));
 
