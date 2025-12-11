@@ -21,6 +21,7 @@
   src="https://www.facebook.com/tr?id=1166781325588266&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -508,6 +509,13 @@
       closeBtn.focus();
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead');
+      }
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 120,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
       }
     };
     const closeModal = () => overlay.classList.remove('show');
